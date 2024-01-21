@@ -1,11 +1,10 @@
--- 8. Виведіть назви кафедр, на яких викладається дисципліна
--- «Database Theory».
+-- 9. Виведіть назви груп, що належать до факультету «Computer Science».
 
-SELECT DISTINCT Departments.Name AS DepartmentName
-FROM Departments
-JOIN Groups ON Departments.Id = Groups.DepartmentId
-JOIN Subjects ON Groups.Id = Subjects.GroupId
-JOIN Lectures ON Subjects.Id = Lectures.SubjectId
-WHERE Subjects.Name = 'Database Theory';
+SELECT Groups.Name AS GroupName
+FROM Groups
+JOIN Departments ON Groups.FacultyId = Departments.FacultyId
+JOIN Faculties ON Departments.FacultyId = Faculties.Id
+WHERE Faculties.Name = 'Computer Science';
+
 
 
