@@ -1,8 +1,9 @@
--- 6. Виведіть назви кафедр і назви груп, які до них належать.
+-- 7. Виведіть назви предметів, які викладає викладач «Samantha Adams».
 
-SELECT Departments.Name AS DepartmentName, Groups.Name AS GroupName
-FROM Groups
-JOIN Departments ON Groups.DepartmentId = Departments.Id;
-
+SELECT DISTINCT Subjects.Name AS SubjectName
+FROM Teachers
+JOIN Lectures ON Teachers.Id = Lectures.TeacherId
+JOIN Subjects ON Lectures.SubjectId = Subjects.Id
+WHERE Teachers.Name = 'Samantha Adams';
 
 
