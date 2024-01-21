@@ -1,16 +1,16 @@
--- 4. Виведіть імена та прізвища викладачів, які читають лекції
--- у групі «P107».
+-- 5. Виведіть прізвища викладачів і назви факультетів, на яких вони читають лекції.
 
-SELECT
-    T.Name AS TeacherName,
-    T.Surname AS TeacherSurname
-FROM
-    Teachers AS T
-JOIN
-    Lectures AS L ON T.Id = L.TeacherId
-JOIN
-    GroupsLectures AS GL ON L.Id = GL.LectureId
-JOIN
-    Groups AS G ON GL.GroupId = G.Id
-WHERE
-    G.Name = 'P107';
+SELECT Faculties.FacultyName, Teachers.TeacherSurname
+FROM Lectures
+JOIN Teachers ON Lectures.teacherid = Teachers.id
+JOIN Faculties ON Lectures.FacultyName = Faculties.FacultyName;
+
+
+-- зробила за прикладом 
+--SELECT Students.student_name, Teachers.teacher_name
+--FROM Courses
+--JOIN Teachers ON Courses.course_name = Teachers.subject
+--JOIN Students ON Courses.student_id = Students.student_id;
+--код не запустився
+
+
