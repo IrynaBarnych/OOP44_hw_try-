@@ -1,9 +1,11 @@
--- 7. Виведіть назви предметів, які викладає викладач «Samantha Adams».
+-- 8. Виведіть назви кафедр, на яких викладається дисципліна
+-- «Database Theory».
 
-SELECT DISTINCT Subjects.Name AS SubjectName
-FROM Teachers
-JOIN Lectures ON Teachers.Id = Lectures.TeacherId
-JOIN Subjects ON Lectures.SubjectId = Subjects.Id
-WHERE Teachers.Name = 'Samantha Adams';
+SELECT DISTINCT Departments.Name AS DepartmentName
+FROM Departments
+JOIN Groups ON Departments.Id = Groups.DepartmentId
+JOIN Subjects ON Groups.Id = Subjects.GroupId
+JOIN Lectures ON Subjects.Id = Lectures.SubjectId
+WHERE Subjects.Name = 'Database Theory';
 
 
