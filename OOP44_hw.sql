@@ -1,11 +1,16 @@
--- 3. Виведіть прізвища кураторів груп і назви груп, які вони курирують.
+-- 4. Виведіть імена та прізвища викладачів, які читають лекції
+-- у групі «P107».
 
 SELECT
-    C.Surname AS CuratorSurname,
-    G.Name AS GroupName
+    T.Name AS TeacherName,
+    T.Surname AS TeacherSurname
 FROM
-    Curators AS C
+    Teachers AS T
 JOIN
-    GroupsCurators AS GC ON C.Id = GC.CuratorId
+    Lectures AS L ON T.Id = L.TeacherId
 JOIN
-    Groups AS G ON GC.GroupId = G.Id;
+    GroupsLectures AS GL ON L.Id = GL.LectureId
+JOIN
+    Groups AS G ON GL.GroupId = G.Id
+WHERE
+    G.Name = 'P107';
