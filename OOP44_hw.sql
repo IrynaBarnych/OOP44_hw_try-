@@ -1,10 +1,13 @@
--- 9. Виведіть назви груп, що належать до факультету «Computer Science».
+-- 10. Виведіть назви груп 5-го курсу, а також назви факультетів,
+-- до яких вони належать.
 
-SELECT Groups.Name AS GroupName
+SELECT Groups.Name AS GroupName, Faculties.Name AS FacultyName
 FROM Groups
 JOIN Departments ON Groups.FacultyId = Departments.FacultyId
 JOIN Faculties ON Departments.FacultyId = Faculties.Id
-WHERE Faculties.Name = 'Computer Science';
+WHERE Groups.Year = 5;
+
+
 
 
 
